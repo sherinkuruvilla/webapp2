@@ -584,7 +584,6 @@ app = webapp2.WSGIApplication([
         (r'/logout', LogoutHandler),
         (r'/like', LikeHandler),
         (r'/deleteblog', DeleteBlogHandler),
-        # (r'/comment', CommentHandler),
         ], debug=True)
 
 app.error_handlers[404] = handle_404
