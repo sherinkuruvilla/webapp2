@@ -1,0 +1,73 @@
+{% extends "blog_base.html" %}
+
+{% block content %}
+<form method="post">
+<div class="container">
+  <div class="headerrow">
+    <div class="subject, col-10">
+      <b>{{blog.subject}}</b>
+      <br> {{blog.author}}
+    </div>
+    <div class="created, col-2">
+      {{blog.created.strftime("%b %d %Y")}}
+      <input type="hidden" name="blogid" value="{{blog.key().id()}}">
+    </div>
+  </div>
+  <div class="contentrow">
+    <div class="col-12">{{blog.content}}
+    </div>
+    <div >
+      {% if blog.author == username %}
+      <br><br><a class="button" href="/blog/newpost?blogid={{blog.key().id()}}">edit</a>
+      &nbsp;<a class="button" href="/deleteblog?blogid={{blog.key().id()}}">delete</a>
+      {% endif %}
+      <br><br>
+      {% if blog.author == username %}
+      <a class="disabled" href="">like</a>
+      {% else %}
+      <a class="button" href="/like?blogid={{blog.key().id()}}&referralurl={{'/blog/'}}{{blog.key().id()}}">like</a>
+      {% endif %}
+      &nbsp;{{ blog.likes.count()}} likes
+      <div class="col-12">
+        <br><br>
+        <b>Comments:</b><br>
+
+        {%  for comment in blog.comments %}
+
+            {% if comment.commentid == editcommentid %}
+              <br>
+              <b>Edit comment:</b><br>
+              <input type="hidden" name="commentid" value="{{editcommentid}}">
+              <textarea name="comment" style="width:400px;height:100px">{{comment.content}}</textarea>
+              <div class="error">{{error}}</div>
+              <input type="Submit">
+            {% else %}
+              <br><br>
+              {{comment.username + ': ' + comment.content}} &nbsp;
+              {% if comment.username == username %}
+              <a class="button" href="/blog/{{blog.key().id()}}?editcommentid={{comment.key().id()}}">edit</a>
+              &nbsp;<a class="button" href="/blog/{{blog.key().id()}}?deletecommentid={{comment.key().id()}}">delete</a>
+              <br><br>
+              {% endif %}
+            {% endif %}
+
+        {% endfor %}
+
+        {% if not editcommentid  %}
+          <b>Add comment:</b><br>
+          <input type="hidden" name="commentid" value="{{commentid}}">
+          <textarea name="comment" style="width:400px;height:100px">{{comment}}</textarea>
+          <div class="error">{{error}}</div>
+          <br>
+          <input type="Submit">
+        {% endif %}
+
+        <br><br><a class="button" href="/blog">Cancel</a>
+
+      </div>
+    </div>
+  </div>
+</div>
+</form>
+
+{% endblock %}

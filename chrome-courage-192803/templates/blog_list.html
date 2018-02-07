@@ -1,0 +1,52 @@
+{% extends "blog_base.html" %}
+
+{% block content %}
+
+
+<div class="container">
+  {% for blog in blogs %}
+    <div class="headerrow">
+      <div class="subject, col-10">
+        <b>{{blog.subject}}</b>
+        <br> {{blog.author}}
+        <input type="hidden" name="blog_id" value="{{blog.key().id()}}">
+      </div>
+      <div class="created, col-2">
+        {{blog.created.strftime("%b %d %Y")}}
+      </div>
+    </div>
+    <div class="contentrow">
+      <div class="col-12">{{blog.content}}
+      </div>
+      <div >
+        {% if blog.author == username %}
+          <br><br><a class="button" href="/blog/newpost?blogid={{blog.key().id()}}">edit</a>
+          &nbsp;<a class="button" href="/deleteblog?blogid={{blog.key().id()}}">delete</a>
+        {% endif %}
+
+        {% if blog.author == username %}
+          <br><br><a class="disabled" href="">like</a>
+        {% else %}
+          <br><br><a class="button" href="/like?blogid={{blog.key().id()}}&referralurl={{'/blog'}}">like</a>
+        {% endif %}
+
+        &nbsp;{{ blog.likes.count()}} likes
+        <br><br>
+
+        <b>Comments:</b><br>
+        {%  for comment in blog.comments %}
+          {{comment.username + ': ' + comment.content}} &nbsp;
+          {% if comment.username == username %}
+            <a class="button" href="/blog/{{blog.key().id()}}?editcommentid={{comment.key().id()}}">edit</a>
+            &nbsp;<a class="button" href="/blog/{{blog.key().id()}}?deletecommentid={{comment.key().id()}}">delete</a>
+          {% endif %}
+          <br><br>
+        {% endfor %}
+        <br><br><a class="button" href="/blog/{{blog.key().id()}}">comment</a><br><br>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Blog</title>
+</head>
+<body>
+
+{% if loggedin %}
+  <div class="container, bgwhite">
+    <div class="row">
+      <div class="col-8"><h1> <a href="/blog"> CS 253 Blog </a> </h1></div>
+      <div class="col-4, user">
+        <b>{{user.name}}</b>
+        <br>
+        <a href="/blog/newpost"> Add New Blog <a>
+        <br>
+        <a href="/logout"> Logout  <a>
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+{% block content %}
+{% endblock %}
+
+
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    width:100%;
+    padding-top: 50px;
+    padding-left: 10px;
+    padding-right:10px;
+    box-shadow: 1px 1px 2px 2px MistyRose;
+    background-color: Ivory;
+
+}
+
+.bgwhite {
+    background-color: white;
+    box-shadow: 1px 1px 2px 2px ivory;
+    padding-left: 40px;
+}
+
+.row {
+    width: 100%;
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap:nowrap;
+
+    /*border-bottom: 1px solid #999;*/
+
+}
+
+.headerrow {
+    width: 100%;
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap:nowrap;
+    /*border-bottom: 1px solid #999;*/
+
+}
+
+.contentrow {
+    width: 100%;
+    margin-bottom: 50px;
+    padding-bottom: 20px;
+    display: flex;
+    flex-wrap:wrap;
+    border-bottom: 1px solid MistyRose;
+}
+
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+.bold {
+  font-weight:bold;
+}
+
+body {
+  font-family: sans-serif;
+  width:800px;
+  margin: 0 auto;
+  padding:10px;
+  text-decoration: none;
+}
+
+ a {
+  text-decoration: none;
+}
+
+.error {
+  color:red;
+}
+
+.user {
+  margin-top:30px;
+  text-align:right;
+  position: relative;
+  right: 0px;
+  align-content: right;
+}
+
+.edit {
+  margin-top:30px;
+  text-align:right;
+  position: relative;
+  right: 0px;
+  align-content: right;
+}
+
+.button {
+  font: normal 20px sans-serif;
+  text-decoration: none;
+  background-color: #EEEEEE;
+  color: #333333;
+  padding: 2px 6px 2px 6px;
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #CCCCCC;
+}
+
+.disabled {
+  font: normal 20px sans-serif;
+  text-decoration: none;
+  background-color: #EEEEEE;
+  pointer-events: none;
+  cursor: default;
+  color: #C0C0C0;
+  padding: 2px 6px 2px 6px;
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #CCCCCC;
+}
+
+label {
+  display:block;
+  font-size:20px;
+}
+
+.subjectinput {
+  width:500px;
+  font-size:20px;
+  padding:2px;
+}
+
+textarea {
+  width:500px;
+  height:500px;
+  font-size:17px;
+}
+
+input[type=submit] {
+  font-size:20px;
+}
+
+hr {
+  margin:20px auto;
+}
+</style>
+</body>
+</html>
+

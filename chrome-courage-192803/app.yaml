@@ -1,0 +1,40 @@
+application: chrome-courage-192803
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: yes
+
+handlers:
+- url: /favicon\.ico
+  static_files: favicon.ico
+  upload: favicon\.ico
+
+- url: /blog
+  script: blogs.app
+
+- url: /blog/
+  script: blogs.app
+
+- url: /blog/[\w\/\w]+
+  script: blogs.app
+
+- url: /signups
+  script: blogs.app
+
+- url: /like
+  script: blogs.app
+
+- url: (\/[\w]+)*\/signup
+  script: blogs.app
+
+- url: .*
+  script: blogs.app
+
+
+
+libraries:
+- name: webapp2
+  version: "2.5.2"
+
+- name: jinja2
+  version: latest
