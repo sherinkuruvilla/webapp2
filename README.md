@@ -1,8 +1,8 @@
 # webapp2
 
-##Udacity Web Application development Proj#3
+## Udacity Web Application development Proj#3
 
-##Blogging Application
+## Blogging Application
 This cloud web application allows registered and signed in users to post new blogs, edit or deleting existing blogs.
 Users can like or comment on blogs by other users.  Users can only like a blog once, and cannot like their own blogs.
 Users can only edit or delete their own comments.
@@ -11,7 +11,7 @@ The blog data is stored in Google Datastore on the cloud, and will persist even 
 
 The application security meets industry standards, and maintain user sessions by saving a hashed secure cookie.  The password hashes are also stored securely using a random salt.
 
-###URL:
+### URL:
 http://chrome-courage-192803.appspot.com  
 
 Login: - Users with valid user name and password can login from this screen.  Once user is logged in all other pages and functionality can be accessed without additional logins.
@@ -23,7 +23,7 @@ Add New Blog - Click on add new blog, and enter Blog title and Content. The blog
 Blog Details- Once a new blog is saved, user will be directed to blog by ID page.  User can like a blog, and post comments or edit/delete comments from here as well.
 
 
-##Deployment and Maintenance. 
+## Deployment and Maintenance. 
 
 Sign up for a free Google Cloud account, and get your free basic web site setup, as per instructions on site below.
 From the console launch the dashboard - https://console.cloud.google.com, locate the URL for your web site.
