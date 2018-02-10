@@ -11,8 +11,7 @@ The blog data is stored in Google Datastore on the cloud, and will persist even 
 
 The application security meets industry standards, and maintain user sessions by saving a hashed secure cookie.  The password hashes are also stored securely using a random salt.
 
-### URL:
-http://chrome-courage-192803.appspot.com  
+**URL:**  http://chrome-courage-192803.appspot.com  
 
 Login: - Users with valid user name and password can login from this screen.  Once user is logged in all other pages and functionality can be accessed without additional logins.
 Sign up - Click on the sign up link to obtain a user account.  You may create a few additional test accounts to verify that permissions are setup correctly.
